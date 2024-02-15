@@ -5,7 +5,7 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
-    "buld": "parcel build"
+    "build": "parcel build"
   },
   "author": "Gustav Brodin",
   "license": "ISC",
