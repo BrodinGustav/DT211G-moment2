@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 //Hämta API
-
 fetchData();
 
 async function fetchData() {
@@ -51,10 +50,10 @@ function populateTable(data) {
       rows.forEach(row => tbody.appendChild(row));
     }
     
-});
+    });
+
     //Filterfunktion för "searchbar"
     function filterTable() {
-
         //Lagrar värdet från searchbar i variabel 
         const searchInput = document.getElementById('search').value.toLowerCase();
 
@@ -83,3 +82,7 @@ function populateTable(data) {
           }
         });
       }
+      //Hämta ID och sätt eventlistener kopplad till funktionen
+      document.getElementById('search').addEventListener('input', filterTable);
+
+    

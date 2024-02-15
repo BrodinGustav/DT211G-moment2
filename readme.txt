@@ -11,3 +11,4 @@
 --2024-02-15-- *BUGG* JS-filen hittas inte vid test av liveserver.
 --2024-02-15-- Ordnat bugg. Lagt in eventlistener för varje rubrik. Tagit bort onclick. Flyttat fetchdata och populateTable i samma DomContentLoaded.
 --2024-02-15-- Försökt skapa filter-funktion för searchbar. Error "filterTable not defined"
+--2024-02-15-- Löst error med filterTable. Tagit bort oninput och använt EventListener på search-ID istället.
