@@ -1,6 +1,17 @@
-document.addEventListener("DOMContentLoaded", fetchData);
+document.addEventListener("DOMContentLoaded", function () {
+    const headers = document.querySelectorAll("#courseTable th");
+    const tbody = document.getElementById('tableBody');
+  
+    headers.forEach((header, index) => {
+      header.addEventListener("click", function () {
+        sortTable(index, tbody);
+      });
+    });
 
 //Hämta API
+
+fetchData();
+
 async function fetchData() {
   try {
     const response = await fetch('https://webbutveckling.miun.se/files/ramschema_ht23.json');
@@ -24,17 +35,9 @@ function populateTable(data) {
   }
 
   //Funktion för sortering
-  function sortTable(columnIndex) {
+  function sortTable(columnIndex, tbody) {
+    const rows = Array.from(tbody.getElementsByTagName('tr'));
     
-    //Hämta in table som ska sorteras
-    const table = document.getElementById('courseTable');
-    
-    //Hämtar in <tbody>-element
-    const tbody = table.getElementsByTagName('tbody'); 
-    
-    //Hämtar in <tr>-element, konventerar till array för sort-metod
-    const rows = Array.from(tbody.getElementsByTagName('tr')); 
-
     rows.sort((a, b) => {
         //Hämtar text från <td>-element från klickad kolumn
         const textA = a.getElementsByTagName('td')[columnIndex].textContent;
@@ -48,3 +51,5 @@ function populateTable(data) {
       rows.forEach(row => tbody.appendChild(row));
     }
     
+});
+    //Filterfunktion för "searchbar"
