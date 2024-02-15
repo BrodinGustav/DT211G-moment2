@@ -53,3 +53,33 @@ function populateTable(data) {
     
 });
     //Filterfunktion för "searchbar"
+    function filterTable() {
+
+        //Lagrar värdet från searchbar i variabel 
+        const searchInput = document.getElementById('search').value.toLowerCase();
+
+          //Kopplar till courseTable
+        const table = document.getElementById('courseTable');
+
+        const tbody = table.getElementsByTagName('tbody')[0];
+        
+          //Hämtar alla <tr>-element från <tbody>. Konvertera till array
+        const rows = Array.from(tbody.getElementsByTagName('tr'));
+      
+          //Loppa igenom array
+        rows.forEach(row => {
+
+        //Hämtar text från först <td>
+          const code = row.getElementsByTagName('td')[0].textContent.toLowerCase();
+
+                  //Hämtar text från andra <td>
+          const name = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+          
+          //Kontroll ifall värdet från search lagrat i searchInput finns i kurskoden eller kursnamn
+          if (code.includes(searchInput) || name.includes(searchInput)) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      }
